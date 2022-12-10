@@ -1,0 +1,40 @@
+MODELISATION DE LA BASE CONTRAINTES :
+
+
+
++-----------------------------+                                    +-----------------------------+
+|         article             |                                    |          fournisseur        |
++-----------------------------+                                    +-----------------------------+
+|  id_article INT(3) PK AI    |                   +----------------|  id_fournisseur INT(3) PK AI|
+|  titre      VARCHAR(20)     |                   |                |  nom            VARCHAR(20) |
+|  couleur    VARCHAR(20)     |                   |                |  ville          VARCHAR(20) |
+|  prix	      INT(3)          |                   |                +-----------------------------+
+|  stock	  INT(3)          |                   | 
+|  id_fourn   INT(3) FK - NULL|-------------------+
++-----------------------------+
+
+
+
+
+
+CONTENU DE LA BASE :
+
+article
++-------------+-----------+---------+------+-------+----------+
+| id_article  | titre     | couleur | prix | stock | id_fourn |
++-------------+-----------+---------+------+-------+----------+
+|           1 | tshirt    | bleu    |   10 |    20 |        1 |
+|           2 | chemise   | noir    |   50 |   600 |        1 |
+|           3 | chaussette| blanc   |   30 |   300 |        2 |
+|           4 | chaussures| noir    |   35 |   250 |        2 |
+|           5 | parapluie | orange  |   35 |   120 |        3 |
++-------------+-----------+---------+------+-------+----------+
+
+fournisseur
++----------------+------+-----------+
+| id_fournisseur | nom  | ville     |
++----------------+------+-----------+
+|              1 | nom1 | paris     |
+|              2 | nom2 | marseille |
+|              3 | nom3 | lille     |
++----------------+------+-----------+

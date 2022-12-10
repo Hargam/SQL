@@ -1,0 +1,24 @@
+*****************************************************
+EXERCICES CONTRAINTES RELATIONNELLES TAXIS
+*****************************************************
+
+
+EXERCICE 1
+
+Vous allez créer des contraintes d'intégrités entre les tables "association_vehicule_conducteur" et "conducteur" :
+
+1- La première doit permettre de répercuter tous changements d'id de la table "conducteur" dans la table "association_vehicule_conducteur".
+2- La seconde doit  permettre de bloquer toute suppression de conducteur de la table "conducteur" tant qu'il est associé à un véhicule dans "association_vehicule_conducteur".
+
+
+
+EXERCICE 2
+
+Vous allez créer des contraintes d'intégrités entre les tables "association_vehicule_conducteur" et "vehicule" :
+
+1- La première doit permettre de répercuter tous changements d'id de la table "vehicule" dans la table "association_vehicule_conducteur".
+2- La seconde doit  permettre de mettre la valeur NULL dans la table "association_vehicule_conducteur" lors de la suppression d'un véhicule de la table "vehicule", pour conserver l'historique de la présence des conducteurs associés à ce véhicule.
+
+
+
+*****************************************************

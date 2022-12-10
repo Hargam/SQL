@@ -1,0 +1,30 @@
+******************************************************
+                       Introduction
+******************************************************
+
+QUELQUES DEFINITIONS :
+
+SQL = Structured Query Language
+Il s'agit d'un language de requêtes qui nous permet d'interroger une base de données.
+
+Base de données (BDD) :
+Il s'agit d'un emplacement de données sauvegardées et qui permet d'effectuer des opérations de lecture et d'écriture sur ces données.
+La BDD est constituée de TABLES (exemple "membres") qui contiennent des COLONNES (ou CHAMPS), exemple "id_membre", "nom"... et dans lesquelles on range des ENREGISTREMENTS (ou LIGNES) pour chaque membre inscrit. 
+
+La colonne id_membre s'appelle CLE PRIMAIRE qui permet d'identifier l'enregistrement de façon unique.
+
+
+SGBD = Système de Gestion de Base de Données :
+C'est un logiciel qui sert d'interface entre l'utilisateur et la BDD permettant d'y introduire des données, de les mettre à jour et d'y accéder.
+
+CRUD = acronyme anglais pour Create, Read, Update et Delete qui désigne les quatre opérations de base pour le stockage et la manipulation des données en BDD.
+
+
+********************************
+UTILISATION DU SQL :
+Exemple avec un formulaire d'inscription à notre site : le PHP reçoit les données du formulaires, les communique à la requête SQL qui les insére en BDD.
+
+Puis quand l'internaute se connecte, le PHP reçoit les données du formulaire, les communique à la requête SQL qui vérifie leur existence en BDD. Si elles existent, on affiche la page de bienvenue sinon "erreur sur les identifiants".
+
+
+********************************

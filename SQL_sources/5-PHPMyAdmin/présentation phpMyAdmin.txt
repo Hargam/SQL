@@ -1,0 +1,129 @@
+//---------------------------------------------------------------------------------------------------
+// PRESENTATION DE PHPMYADMIN
+//---------------------------------------------------------------------------------------------------
+
+// Qu'est-ce PHPMyAdmin : 
+PHPMyAdmin est une interface d'administration pour le SGBD MySQL. Il est écrit en langage PHP et s'appuie sur le serveur HTTP Apache (serveur web).
+
+Il permet d'administrer les éléments suivants :
+	- les bases de données
+	- les tables et leurs champs (ajout, suppression, définition du type)
+	- les index, les clés primaires et étrangères
+	- les utilisateurs de la base et leurs permissions
+	- exporter les données dans divers formats
+
+Notez qu'il existe d'autres interfaces d'administration de BDD pouvant remplacer PMA : DbNinja, SQL Buddy, MyWebSQL, phpMiniAdmin, Sidu...
+
+
+								
+
+//------------------------------------------------------------------
+//  Quelques définitions :
+
+- La BDD est un emplacement des données sauvegardées et qui permet d'effectuer différentes opérations de lecture et d'écriture sur ces données.
+
+- La BDD est constitutée de tables : 	ensemble de données relatives à un même "concept", exemple la table "membre" regroupe les données relatives au membre, 
+  										OU permettant de lier d'autres tables : cas des tables de jointure, exemple la table "emprunt" dans la BDD "bibliotheque" qui lie les tables "abonne" et "livre". 
+
+- La table est constituée de CHAMPS : élément vertical (colonne) dans une table représentant un ensemble de valeurs d'un attribut, par exemple l'email des membres.
+  La table est constituée d'ENREGISTREMENTS : élément horizontal dans une table (ligne) représentant les valeurs pour une référence (identifiant).
+
+- L'enregistrement possède une CLE PRIMAIRE : Identifiant UNIQUE permettant de retrouver sans ambiguïté la ligne dans une table, exemple "id_membre".
+
+- L'enregistrement peut posséder des CLES ETRANGERES : colonne représentant une clef primaire d'une autre table, insérée dans la table afin d'assurer la relation entre les deux tables, exemple id_membre dans la table commmande. 
+
+- L'enregistrement peut posséder un INDEX : structure de données qui reprend la liste ordonnée des valeurs (triées par ordre croissant) de la colonne indexée qui a pour objectif d'accélérer les requêtes, ou de créer de clés primaires ou étrangères dans une table. Exemple : si on fait souvent des requêtes triées par ordre croissant sur le champ "nom" de la table "membre", on y met un index pour accélerer ces requêtes. 
+
+	
+
+//------------------------------------------------------------------
+// Présentation de la base de données que nous allons créer :
+
+Nous allons créer une base de données appelée "base_membre" :
+
+                ---------------------------								
+				|      table membre       |								
+				---------------------------								
+             	|  id_membre INT(4) PK AI | clé primaire
+				|  email     VARCHAR(50)  |
+				|  mdp  	 VARCHAR(50)  |	
+				|  genre     ENUM('h','f')|
+				---------------------------	
+
+			
+1- Overview globale de phpMyAdmin :
+	- fenêtre de gauche : vue des bases présentes sur le serveur
+	- fenêtre de droite : page d'accueil par défaut, avec différents onglets en haut. Cliquer sur "Bases de Données"
+
+2- Onglet Bases de données :
+	- Créer une base de données : "base_membre", interclassement utf8mb4_general_ci (toujours mettre cette valeur si vous êtes en utf-8)
+	
+3- Nouvelle table :
+	- Créer une table : "membre", nombre de colonnes : 4
+	
+4- Table abonne :
+	- Définition de champs :
+			* Nom : le nom du champ de la table
+			* Type : 
+					INT pour nombre entier (taille maxi 11 caractères pour une valeur entre -2 147 483 648 et 2 147 483 647 OU entre 0 et 4 294 967 295 si unsigned). Notez que la taille des INT n'a d'utilité que pour les Zerofill (ajouter des 0 au chiffre pour atteindre le nombre de caractères indiqué : cf plus bas)
+					VARCHAR pour chaîne de caractères de longueur variable à préciser dans Taille/valeurs (taille maxi 255 caractères)
+					TEXT pour chaîne de caractères de longueur variable à préciser dans Taille/valeurs (taille maxi 65535 caractères)
+					DATE au format YYYY-MM-DD
+					DATETIME au format YYYY-MM-DD HH:ii:ss
+					FLOAT pour nombre décimal
+					ENUM pour une énumaration => liste à donner dans Taille/valeurs selon la syntaxe 'm','f' (pour masculin et féminin par exemple)
+			* Taille/valeurs : cf ci-dessus
+			* Défaut : valeur par défaut pris par le champ : aucune, 'tel que défini' pour fixer sa propre valeur, NULL, timestamp actuel. 
+			* Interclassement : laisser vide car fixé au niveau de la création de la base.		 
+			* Attributs : Binary pour rendre le champ sensible à la casse
+						  Unsigned : pas de chiffre négatif
+						  Unsigned Zerofill : pas de chiffre négatif + complète par des 0 pour obtenir la longueur spécifiée dans Taille/valeurs (par exemple "12" en INT(4) donne "0012").
+					 
+			* Null : accepte la valeur Null (nous avons vu un exemple d'utilisation avec les requêtes de jointure)
+			* Index : PRIMARY (PK) pour désigner ce champ comme étant la clé primaire de la table
+			* AI : pour auto-incrément de l'index
+			* Commentaires : annotations
+					 
+5- Enregistrement :
+	- Sélectionner la table "membre" et cliquer sur onglet Insérer pour créer 1 enregistrement :
+	  email : john.doe@mail.fr - mdp : milou - genre : m
+
+	- puis cliquer sur Afficher pour voir l'enregistrement de la table.		 
+	
+					 
+
+			 
+//-----------------------------------------------------------------					 
+IMPORT/EXPORT avec PMA :
+
+- Export avec PMA : 
+		1° Vérifier dans le fil d'ariane que l'on est bien sur la BDD à exporter : "base_membre"
+		2° > onglet Exporter > Executer
+		3° Le fichier .sql se télécharge dans le dossier /téléchargements/
+
+- Import avec PMA :
+        1° Créer une BDD appelée "base_membre_import"
+        2° > onglet Importer > cliquer sur "Parcourir" et sélectionner le fichier exporter précédemment > Exécuter
+        3° C'est fait !
+
+
+---------------------------------------------- FIN  ----------------------------------------------
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
